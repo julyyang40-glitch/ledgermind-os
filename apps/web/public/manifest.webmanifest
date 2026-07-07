@@ -1,0 +1,17 @@
+{
+  "name": "自动记账 Agent OS",
+  "short_name": "记账 OS",
+  "description": "本地优先的微信、支付宝自动记账工作台",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef2f4",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#08111f">
+    <meta name="github-repo-url" content="">
+    <title>LedgerMind OS</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=0.1.0-beta.2">
+  </head>
+  <body>
+    <main id="showcase-page" class="showcase-page" hidden>
+      <header class="showcase-nav">
+        <a class="showcase-brand" href="/"><span>LM</span><strong>LedgerMind OS</strong></a>
+        <a href="/">打开财务总览</a>
+      </header>
+      <section class="showcase-hero">
+        <div class="showcase-hero-copy">
+          <span class="showcase-kicker">LOCAL-FIRST · CHINESE FINANCE AGENT</span>
+          <h1>LedgerMind OS</h1>
+          <h2>让财务智能体替你整理账本</h2>
+          <p>自动导入、分类、分析和总结你的每一笔交易。支持微信、支付宝、人民币账本与 Android 离线端。</p>
+          <div class="showcase-badges"><span>本地优先</span><span>中文记账</span><span>AI 自动分类</span><span>Android 离线端</span></div>
+          <div class="showcase-actions"><a class="primary" href="/?display=1">进入演示模式</a><a href="/?demo=1">加载演示账本</a><a href="/">打开财务总览</a><a id="showcase-github" href="#" hidden>GitHub Star</a></div>
+        </div>
+        <div class="showcase-agent-status"><i></i><span>财务智能体运行中</span><strong>98 笔交易已整理</strong><small>DeepSeek V4 Flash · 本地分析可用</small></div>
+      </section>
+      <section class="showcase-previews" aria-label="产品预览">
+        <article class="showcase-desktop-preview">
+          <div class="preview-toolbar"><span></span><span></span><span></span><strong>财务指挥中心</strong></div>
+          <div class="preview-metrics"><div><span>本月支出</span><strong>¥4,862.30</strong></div><div><span>自动分类率</span><strong>96%</strong></div><div><span>待确认</span><strong>2</strong></div><div><span>可节省</span><strong>¥86.00</strong></div></div>
+          <div class="preview-report"><div><span>账本健康度</span><strong>86</strong><small>状态良好</small></div><p>餐饮支出较上月增加 18%，建议优先检查外卖和咖啡消费。</p></div>
+        </article>
+        <article class="showcase-mobile-preview">
+          <div class="preview-mobile-top">早上好 <span>2026 年 6 月</span></div>
+          <strong>本月账本已同步</strong><p>98 笔交易 · 自动分类率 96%</p>
+          <div class="preview-health"><span>账本健康度</span><strong>86</strong><small>状态良好</small></div>
+          <div class="preview-mobile-nav"><span>首页</span><span>交易</span><span>洞察</span><span>智能体</span></div>
+        </article>
+      </section>
+      <section class="showcase-section"><span class="showcase-kicker">CAPABILITIES</span><h2>从账单导入到中文财务问答</h2><div class="showcase-feature-grid"><article><strong>微信 / 支付宝导入</strong><p>兼容两大平台的原始账单。</p></article><article><strong>CSV / XLSX 导入</strong><p>识别编码、表头、来源和重复交易。</p></article><article><strong>AI 自动分类</strong><p>结合规则、商户记忆与置信度。</p></article><article><strong>智能审核箱</strong><p>集中处理待确认、预算与周期扣费。</p></article><article><strong>中文财务问答</strong><p>基于当前账本生成结构化回答。</p></article><article><strong>月度报告</strong><p>支出、收入、净额与节省建议。</p></article><article><strong>自动化规则</strong><p>用中文创建分类规则并持续复用。</p></article><article><strong>本地优先</strong><p>数据默认保存在当前设备。</p></article><article><strong>Android 离线</strong><p>无 PC 后端也能管理本地账本。</p></article><article><strong>JSON / CSV 导出</strong><p>便于备份、迁移与二次分析。</p></article></div></section>
+      <section class="showcase-workflow"><span>导入账单</span><i>→</i><span>智能分类</span><i>→</i><span>审核确认</span><i>→</i><span>预算分析</span><i>→</i><span>月报总结</span><i>→</i><span>智能体问答</span></section>
+	      <section class="showcase-open-source"><div><span class="showcase-kicker">OPEN SOURCE READY</span><h2>为自部署与二次开发准备</h2><p>Node.js 本地后端、Android APK、SiliconFlow / DeepSeek、本地分析回退、OpenAI-compatible 接口、展示模式脱敏与人民币账本。智能体只提出建议，修改操作始终由用户确认。</p></div><div class="showcase-actions"><a class="primary" href="/?display=1">进入演示模式</a><a href="/?demo=1">加载演示账本</a><a href="/">打开财务总览</a></div></section>
+      <footer class="showcase-footer">如果这个项目对你有帮助，欢迎在 GitHub 点一个 Star。</footer>
+    </main>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="&#23548;&#33322;">
+        <div class="brand-block">
+          <div class="brand-mark">A</div>
+          <div>
+            <h1>LedgerMind OS</h1>
+            <p>让财务智能体替你整理账本</p>
+          </div>
+        </div>
+        <nav class="nav-list">
+          <a href="#overview"><span>01</span>总览</a>
+          <a href="#transactions"><span>02</span>交易</a>
+          <a href="#agent-inbox"><span>03</span>智能审核箱</a>
+          <a href="#workbench"><span>04</span>预算</a>
+          <a href="#insights-panel"><span>05</span>洞察</a>
+          <a href="#rules-panel"><span>06</span>规则</a>
+          <a href="#reports-panel"><span>07</span>报告</a>
+          <a href="#memory-panel"><span>08</span>智能体记忆</a>
+          <a href="#automation-panel"><span>09</span>自动化</a>
+          <a href="#privacy-panel"><span>10</span>隐私</a>
+          <a href="#settings-panel"><span>11</span>设置</a>
+          <a href="#diagnostics-panel"><span>12</span>系统诊断</a>
+        </nav>
+        <div class="sidebar-stats">
+          <div>
+            <span>开源定位</span>
+            <strong>GitHub Ready</strong>
+          </div>
+          <div>
+            <span>版本</span>
+            <strong>v0.1.0-beta</strong>
+          </div>
+          <div>
+            <span>运行模式</span>
+            <strong>本地优先</strong>
+          </div>
+        </div>
+        <div class="privacy-note">
+          <strong>隐私优先 · 可自部署</strong>
+          <span>data/ledger-store.json</span>
+        </div>
+        <div class="star-note">如果这个项目对你有帮助，欢迎在 GitHub 点一个 Star。</div>
+      </aside>
+
+      <main class="main-shell">
+        <section class="topbar" aria-label="&#24037;&#20316;&#21488;&#22836;&#37096;">
+          <div class="header-title">
+            <p id="service-status" class="eyebrow">智能体运行中 · 本地优先 · 数据不离开设备</p>
+            <h2>LedgerMind OS 工作台</h2>
+            <span>自动整理微信 / 支付宝账单，只把需要你确认的财务决策推到前台。</span>
+          </div>
+          <div class="controls">
+            <input id="user-id" type="text" value="demo-user" aria-label="&#29992;&#25143; ID">
+            <input id="month" type="month" aria-label="&#26376;&#20221;">
+            <input id="command-input" class="command-input" type="search" placeholder="输入命令：导入账单、生成月报、查找订阅..." aria-label="快捷命令">
+            <button id="import-samples" type="button" class="secondary-button">演示账本</button>
+            <button id="backup-json" type="button" class="secondary-button">备份</button>
+            <button id="demo-mode-toggle" type="button" class="secondary-button" aria-pressed="false">展示模式</button>
+            <button id="clear-user" type="button" class="secondary-button danger-button">清空</button>
+            <button id="theme-toggle" type="button" class="icon-button" title="&#20999;&#25442;&#20027;&#39064;">&#9680;</button>
+            <button id="refresh" type="button">刷新</button>
+          </div>
+        </section>
+
+        <aside id="display-mode-banner" class="display-mode-banner" hidden>
+          <strong>展示模式已开启</strong>
+          <span>敏感金额与商户已脱敏，适合用于 README 截图。</span>
+        </aside>
+
+        <aside id="demo-ledger-banner" class="demo-ledger-banner" hidden>
+          <div><strong>演示账本</strong><span>当前正在使用独立的匿名示例数据，不会覆盖你的真实账本。</span></div>
+          <button id="clear-demo-ledger" type="button" class="secondary-button danger-button">清除演示账本</button>
+        </aside>
+
+        <section class="mobile-context-bar" aria-label="账本月份">
+          <label for="mobile-month">账本月份</label>
+          <input id="mobile-month" type="month" aria-label="移动端月份">
+          <button id="mobile-refresh" type="button">刷新</button>
+        </section>
+
+        <section class="mobile-agent-card" aria-label="移动端智能体状态">
+          <div>
+            <span class="eyebrow">本机账本 · 离线可用</span>
+            <h2 id="mobile-summary-title">本月账本已同步</h2>
+            <p id="mobile-summary-copy">正在汇总本月交易。</p>
+          </div>
+          <div class="mobile-agent-grid">
+            <span id="mobile-summary-pending">待确认 0 笔</span>
+            <span id="mobile-summary-expense">支出 ¥0.00</span>
+            <span id="mobile-summary-subscriptions">订阅 0 项</span>
+            <span id="mobile-summary-count">本机 0 笔</span>
+            <span id="mobile-summary-budget">预算风险 0 项</span>
+            <span id="mobile-summary-mode">本地优先</span>
+            <span id="mobile-data-quality">数据质量待评估</span>
+          </div>
+          <div class="mobile-agent-answer" id="mobile-agent-answer">
+            去「交易」处理账本，去「智能体」提问，去「设置」管理本地数据和模型 Key。
+          </div>
+        </section>
+
+        <section id="first-run-guide" class="first-run-guide" hidden>
+          <div class="first-run-copy"><span class="section-kicker">GET STARTED</span><h2>欢迎使用 LedgerMind OS</h2><p>让财务智能体替你整理账本。导入真实账单，或先加载不会影响个人数据的演示账本。</p><ol class="first-run-steps"><li><span>1</span>导入微信或支付宝账单</li><li><span>2</span>查看智能审核箱</li><li><span>3</span>询问财务智能体</li></ol></div>
+          <div class="first-run-actions"><button id="guide-import" type="button">导入账单</button><button id="guide-demo" type="button" class="secondary-button">加载演示账本</button><button id="guide-display" type="button" class="secondary-button">开启展示模式</button><button id="guide-model" type="button" class="secondary-button">配置模型</button></div>
+        </section>
+
+        <div class="dashboard-layout">
+          <div class="dashboard-main">
+        <section class="desktop-hero" aria-label="Finance Command Center">
+          <div class="hero-copy">
+            <div class="hero-status-line">
+              <span class="agent-running"><i></i> 智能体运行中</span>
+              <span>本地优先</span>
+              <span>DeepSeek V4 Flash</span>
+            </div>
+            <span id="hero-month" class="hero-month">&#24403;&#21069;&#26376;&#20221;</span>
+            <h2>财务指挥中心</h2>
+            <p>你的财务智能体正在运行，已自动整理本月账本、识别异常支出，并生成节省建议。</p>
+            <div class="command-center-grid">
+              <div><span>账本交易</span><strong id="command-total">0</strong></div>
+              <div><span>本月支出</span><strong id="command-expense">¥0.00</strong></div>
+              <div><span>本月收入</span><strong id="command-income">¥0.00</strong></div>
+              <div><span>本月净额</span><strong id="command-net">¥0.00</strong></div>
+              <div><span>自动分类</span><strong id="command-rate">0%</strong></div>
+              <div><span>待确认</span><strong id="command-pending">0</strong></div>
+            </div>
+            <div class="hero-actions">
+              <a href="#agent-inbox" class="hero-button primary">查看待确认</a>
+              <a href="#settings-panel" class="hero-button">询问智能体</a>
+              <a href="#workbench" class="hero-button">导入账单</a>
+              <a href="#monthly-report-card" class="hero-button">查看月报</a>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <span>预计可节省</span>
+            <strong id="hero-saving">¥0.00</strong>
+            <small id="hero-sync-time">正在同步本地账本</small>
+          </div>
+          <div class="hero-stack">
+            <div>
+              <span>数据同步</span>
+              <strong id="hero-sync-state">本地账本在线</strong>
+            </div>
+            <div>
+              <span>智能体模式</span>
+              <strong id="hero-agent-mode">云端模型 + 本地分析</strong>
+            </div>
+            <div>
+              <span>智能体洞察</span>
+              <strong id="hero-insight">正在检查本月账本</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="next-action-panel" class="next-action-panel" aria-labelledby="next-action-title">
+          <div class="guide-section-heading">
+            <div><span class="section-kicker">NEXT ACTION</span><h2 id="next-action-title">我现在该做什么？</h2></div>
+            <button id="open-onboarding" type="button" class="text-button">快速说明</button>
+          </div>
+          <div id="next-action-list" class="next-action-list"></div>
+        </section>
+
+        <section id="quick-start-panel" class="quick-start-panel" aria-labelledby="quick-start-title">
+          <div class="guide-section-heading">
+            <div><span class="section-kicker">QUICK START</span><h2 id="quick-start-title">快速开始</h2><p>不知道从哪里开始？按下面 4 步就能完成一次自动记账流程。</p></div>
+            <div class="guide-heading-actions"><button id="open-feature-map" type="button" class="secondary-button">功能地图</button><button id="dismiss-quick-start" type="button" class="text-button">我知道了</button></div>
+          </div>
+          <div class="quick-start-steps">
+            <article><span>01</span><div><strong>导入账单</strong><p>上传微信、支付宝、CSV 或 XLSX 账单，自动识别交易、金额、时间和来源。</p></div><button type="button" data-guide-action="import">导入账单</button></article>
+            <article><span>02</span><div><strong>处理待确认</strong><p>确认低置信度分类、异常消费、预算风险和周期扣费。</p></div><button type="button" data-guide-action="review">打开审核箱</button></article>
+            <article><span>03</span><div><strong>询问智能体</strong><p>用中文询问本月花销、预算风险、订阅扣费和节省建议。</p></div><button type="button" data-guide-action="agent">问问智能体</button></article>
+            <article><span>04</span><div><strong>查看报告</strong><p>查看月度、预算和数据质量报告，并可导出 Markdown。</p></div><button type="button" data-guide-action="reports">查看报告中心</button></article>
+          </div>
+        </section>
+
+        <section class="trust-strip" aria-label="开源项目能力">
+          <article><span>LOCAL</span><strong>Local-first</strong><p>财务数据本地保存</p></article>
+          <article><span>HOST</span><strong>Self-hosted</strong><p>Node.js 本地后端</p></article>
+          <article><span>API</span><strong>OpenAI-compatible</strong><p>SiliconFlow 模型接口</p></article>
+          <article><span>APK</span><strong>Android offline</strong><p>移动端独立运行</p></article>
+        </section>
+
+        <section class="intelligence-overview" aria-label="账本智能概览">
+          <article class="ledger-health-card" id="ledger-health-card">
+            <div class="section-intro compact-intro">
+              <div><span class="section-kicker">LEDGER HEALTH</span><h2>账本健康度</h2></div>
+              <span id="health-status" class="status-badge confirmed">等待评估</span>
+            </div>
+            <div class="health-content">
+              <div id="health-ring" class="health-ring" style="--health-score: 0">
+                <strong id="health-score">--</strong><span>满分 100</span>
+              </div>
+              <div><strong id="health-title">暂无足够数据</strong><p id="health-copy">导入账单后，智能体将根据分类率、预算风险和异常交易生成账本健康度。</p><ul id="health-factors" class="health-factors"></ul></div>
+            </div>
+          </article>
+
+          <article class="data-quality-card" id="data-quality-card">
+            <div class="section-intro compact-intro">
+              <div><span class="section-kicker">DATA QUALITY</span><h2>数据质量</h2></div>
+              <span id="data-quality-status" class="status-badge ignored">等待评估</span>
+            </div>
+            <div class="quality-content">
+              <div id="data-quality-ring" class="health-ring quality-ring" style="--health-score: 0"><strong id="data-quality-score">--</strong><span>满分 100</span></div>
+              <div><strong id="data-quality-title">暂无足够数据</strong><p id="data-quality-copy">导入账单后评估数据是否适合智能体分析。</p><ul id="data-quality-factors" class="health-factors"></ul><div id="data-quality-actions" class="quality-actions"></div><div id="quality-repair-summary" class="quality-repair-summary"></div></div>
+            </div>
+          </article>
+
+          <article class="monthly-report-card" id="monthly-report-card">
+            <div class="section-intro compact-intro">
+              <div><span class="section-kicker">MONTHLY REPORT</span><h2>月度报告</h2></div>
+              <div class="report-heading-actions"><span id="monthly-report-period">当前月份</span><button id="export-report-markdown" type="button" class="mini-button">导出 Markdown</button></div>
+            </div>
+            <p id="monthly-report-summary" class="monthly-report-summary">导入账单后生成本月财务总结。</p>
+            <div id="monthly-report-grid" class="monthly-report-grid"></div>
+          </article>
+        </section>
+
+        <section id="overview" class="summary-grid" aria-label="&#27010;&#35272;">
+          <div class="metric accent-metric">
+            <span>本月支出</span>
+            <strong id="expense">0.00</strong>
+          </div>
+          <div class="metric">
+            <span>自动分类率</span>
+            <strong id="income">0.00</strong>
+          </div>
+          <div class="metric">
+            <span>待确认</span>
+            <strong id="pending">0</strong>
+          </div>
+          <div class="metric">
+            <span>可节省空间</span>
+            <strong id="count">0</strong>
+          </div>
+        </section>
+
+        <section class="agent-daily-summary" aria-label="Agent 今日工作摘要">
+          <div class="section-intro">
+            <div><span class="section-kicker">AGENT DAILY BRIEF</span><h2>今日工作摘要</h2></div>
+            <span id="daily-summary-status" class="status-badge confirmed">运行正常</span>
+          </div>
+          <div class="daily-summary-grid" id="daily-summary-grid"></div>
+        </section>
+
+        <section id="agent-inbox" class="agent-timeline">
+          <div class="panel-heading">
+            <h2>智能体工作流</h2>
+            <span>实时流程</span>
+          </div>
+          <div class="timeline-list" id="workflow-list">
+            <div class="timeline-item completed"><small>09:12 · 支付</small><span>已同步</span><strong>支付记录同步完成</strong><em>置信度 99%</em></div>
+            <div class="timeline-item completed"><small>09:15 · 账单</small><span>已完成</span><strong>已导入 28 笔交易</strong><em>微信 + 支付宝</em></div>
+            <div class="timeline-item suggested"><small>09:17 · 智能体</small><span>学习中</span><strong>24 笔交易已自动分类</strong><em>规则匹配 + 商户记忆</em></div>
+            <div class="timeline-item review"><small>09:21 · 订阅</small><span>提醒</span><strong>发现 1 个异常订阅</strong><em>价格从 ¥12 变为 ¥19</em></div>
+            <div class="timeline-item completed"><small>09:25 · 报告</small><span>建议</span><strong>周消费摘要已生成</strong><em>等待你确认</em></div>
+          </div>
+        </section>
+
+        <section class="os-grid">
+          <div class="os-panel review-inbox">
+            <div class="panel-heading">
+              <h2>智能审核箱 <small>/ Review Inbox</small></h2>
+              <span id="review-inbox-count">0 笔待处理</span>
+            </div>
+            <div class="review-list" id="review-inbox-list">
+              <article><div><strong>Netflix · 订阅 · ¥19.90</strong><span>检测到价格上涨</span></div><button type="button" class="mini-button">审核</button></article>
+              <article><div><strong>未知商户 · 购物 · ¥42.30</strong><span>置信度 62% · 需要分类</span></div><button type="button" class="mini-button">分类</button></article>
+              <article><div><strong>Figma · 软件 · ¥15.00</strong><span>发现新的周期扣费</span></div><button type="button" class="mini-button">创建规则</button></article>
+            </div>
+          </div>
+
+          <div id="pending-actions-panel" class="os-panel pending-actions-panel">
+            <div class="panel-heading"><h2>待执行操作草稿箱</h2><div class="panel-heading-actions"><span id="pending-action-count">0 项待确认</span><button id="clear-pending-drafts" type="button" class="mini-button danger">清空草稿</button></div></div>
+            <p class="panel-helper">草稿保存在当前设备，默认 24 小时后需要重新确认；任何数据修改都不会自动执行。</p>
+            <div id="pending-action-list" class="pending-action-list"></div>
+          </div>
+
+          <div id="memory-panel" class="os-panel">
+            <div class="panel-heading">
+              <h2>智能体记忆</h2>
+              <span id="memory-count">0 条偏好</span>
+            </div>
+            <div class="memory-list" id="memory-list">
+              <article><strong>优步通常归为交通</strong><span>来源：用户修正 · 准确率 97%</span></article>
+              <article><strong>Notion 和 Figma 归为软件订阅</strong><span>来源：订阅识别 · 准确率 94%</span></article>
+              <article><strong>超过 ¥500 的交易需要标记</strong><span>来源：隐私规则 · 准确率 100%</span></article>
+            </div>
+          </div>
+
+          <div id="automation-panel" class="os-panel">
+            <div class="panel-heading">
+              <h2>自动化规则</h2>
+              <span>自然语言创建</span>
+            </div>
+            <label class="rule-builder">
+              <input id="rule-command" type="text" placeholder="例如：把优步自动归为交通">
+              <button id="create-rule" type="button">创建</button>
+            </label>
+            <div class="rule-card-list" id="automation-preview-list">
+              <article><span>启用</span><strong>标记超过 ¥30 的订阅</strong></article>
+              <article><span>启用</span><strong>自动确认 95% 以上置信度交易</strong></article>
+            </div>
+          </div>
+
+          <div class="os-panel anomaly-panel">
+            <div class="panel-heading">
+              <h2>异常检测</h2>
+              <span id="anomaly-count">0 个提醒</span>
+            </div>
+            <div class="anomaly-list" id="anomaly-list">
+              <article><span>中风险</span><strong>本周餐饮支出上升 32%</strong><p>建议检查午餐相关商户。</p></article>
+              <article><span>高风险</span><strong>检测到疑似重复扣费</strong><p>同一商户出现两笔金额接近的支付。</p></article>
+            </div>
+          </div>
+
+          <div id="privacy-panel" class="os-panel privacy-panel">
+            <div class="panel-heading">
+              <h2>隐私与模型设置</h2>
+              <span>适合开发者自部署</span>
+            </div>
+            <div class="privacy-grid">
+              <span>本地优先模式</span>
+              <span>可接入加密数据库</span>
+              <span>支持自部署</span>
+              <span>兼容 OpenAI API</span>
+              <span>财务数据默认不离开设备</span>
+              <span>可扩展审计日志</span>
+            </div>
+            <div class="api-config">
+              <div>
+                <strong>云端模型调用</strong>
+                <span>移动端账本默认保存在本机；后端地址只是可选同步/代理。也可保存 API Key 后直接调用模型。</span>
+              </div>
+              <label>
+                <input id="api-base-url" type="url" placeholder="例如：http://192.168.1.8:8787">
+                <button id="save-api-base" type="button">保存后端</button>
+              </label>
+              <label>
+                <input id="siliconflow-api-key" type="password" placeholder="API Key" aria-label="API Key">
+                <button id="save-siliconflow-key" type="button">保存 Key</button>
+              </label>
+            </div>
+            <section class="agent-safety-boundary"><div><span class="section-kicker">AGENT SAFETY</span><h3>智能体安全边界</h3><p>智能体负责分析和提出建议，最终修改权始终由你掌握。</p></div><ul><li>智能体不会直接修改账本。</li><li>规则、预算、记忆和周期扣费建议必须进入草稿箱。</li><li>修改及批量操作需要用户二次确认。</li><li>导入批次暂不支持撤销，避免非原子删除导致数据不一致。</li><li>展示模式不会影响真实数据。</li><li>云端模型不可用时自动使用本地分析回退。</li></ul></section>
+          </div>
+
+          <div id="diagnostics-panel" class="os-panel diagnostics-panel">
+            <div class="panel-heading">
+              <h2>系统诊断</h2>
+              <button id="refresh-diagnostics" type="button" class="mini-button">重新检测</button>
+            </div>
+            <p class="diagnostics-copy">仅显示当前设备和当前账本可确认的状态；无法检测的项目会明确标记。</p>
+            <div class="diagnostics-grid">
+              <span><small>本地后端</small><strong id="diagnostic-backend">检测中</strong></span>
+              <span><small>模型配置</small><strong id="diagnostic-model">需配置</strong></span>
+              <span><small>展示模式</small><strong id="diagnostic-display">未开启</strong></span>
+              <span><small>本地账本</small><strong id="diagnostic-ledger">暂无数据</strong></span>
+              <span><small>交易数量</small><strong id="diagnostic-transactions">0</strong></span>
+              <span><small>预算数量</small><strong id="diagnostic-budgets">0</strong></span>
+              <span><small>规则数量</small><strong id="diagnostic-rules">0</strong></span>
+              <span><small>记忆数量</small><strong id="diagnostic-memories">0</strong></span>
+              <span><small>最近智能体调用</small><strong id="diagnostic-agent">未调用</strong></span>
+              <span><small>最近导入</small><strong id="diagnostic-import">暂无记录</strong></span>
+              <span><small>数据质量</small><strong id="diagnostic-data-quality">等待评估</strong></span>
+            </div>
+            <div class="diagnostics-footer"><span>隐私优先：诊断信息只在当前页面呈现。</span><span>如果这个项目对你有帮助，欢迎在 GitHub 点一个 Star。</span></div>
+            <section class="quality-repair-panel"><div class="panel-heading"><h3>数据质量修复建议</h3><span id="quality-repair-count">0 项</span></div><div id="quality-repair-list" class="quality-repair-list"></div></section>
+            <section class="audit-panel"><div class="panel-heading"><h3>操作审计</h3><button id="clear-audit-log" type="button" class="mini-button danger">清空日志</button></div><p class="panel-helper">仅记录建议、确认和结果，不记录 API Key 或账单文件内容。</p><div id="audit-log-list" class="audit-log-list"></div></section>
+          </div>
+        </section>
+
+        <section class="analytics-grid" aria-label="&#20998;&#26512;">
+          <div class="analysis-panel wide-panel">
+            <div class="panel-heading">
+              <h2>&#27599;&#26085;&#25903;&#20986;</h2>
+              <span id="daily-peak">0.00</span>
+            </div>
+            <p class="chart-insight" id="daily-insight">正在分析每日支出趋势</p>
+            <div class="daily-chart" id="daily-chart"></div>
+          </div>
+          <div class="analysis-panel">
+            <div class="panel-heading">
+              <h2>Top &#21830;&#25143;</h2>
+              <span id="merchant-count">0</span>
+            </div>
+            <p class="chart-insight" id="merchant-insight">正在识别主要消费商户</p>
+            <div class="merchant-list" id="top-merchants"></div>
+          </div>
+          <div class="analysis-panel">
+            <div class="panel-heading">
+              <h2>&#20998;&#31867;&#21344;&#27604;</h2>
+              <span id="category-share-count">0</span>
+            </div>
+            <p class="chart-insight" id="category-insight">正在计算分类占比</p>
+            <div class="share-list" id="category-shares"></div>
+          </div>
+          <div class="analysis-panel">
+            <div class="panel-heading">
+              <h2>状态分布</h2>
+              <span id="status-breakdown-count">0</span>
+            </div>
+            <p class="chart-insight" id="status-insight">正在检查交易状态</p>
+            <div class="chart-card" id="status-breakdown"></div>
+          </div>
+          <div class="analysis-panel">
+            <div class="panel-heading">
+              <h2>来源分布</h2>
+              <span id="source-breakdown-count">0</span>
+            </div>
+            <p class="chart-insight" id="source-insight">正在汇总账单来源</p>
+            <div class="chart-card" id="source-breakdown"></div>
+          </div>
+          <div class="analysis-panel">
+            <div class="panel-heading">
+              <h2>收支构成</h2>
+              <span id="direction-breakdown-count">0</span>
+            </div>
+            <p class="chart-insight" id="direction-insight">正在计算本月现金流</p>
+            <div class="chart-card" id="direction-breakdown"></div>
+          </div>
+        </section>
+
+        <section id="workbench" class="workspace">
+          <div class="manual-panel">
+            <div class="panel-heading">
+              <h2>&#25163;&#24037;&#35760;&#36134;</h2>
+              <span id="manual-status">&#24453;&#22635;&#20889;</span>
+            </div>
+            <div class="manual-form">
+              <input id="manual-paid-at" type="datetime-local" aria-label="&#20132;&#26131;&#26102;&#38388;">
+              <select id="manual-direction" aria-label="&#26041;&#21521;">
+                <option value="expense">&#25903;&#20986;</option>
+                <option value="income">&#25910;&#20837;</option>
+                <option value="transfer">&#36716;&#36134;</option>
+                <option value="refund">&#36864;&#27454;</option>
+              </select>
+              <input id="manual-amount" type="number" min="0" step="0.01" placeholder="&#37329;&#39069;" aria-label="&#37329;&#39069;">
+              <input id="manual-merchant" type="text" placeholder="&#21830;&#25143; / &#23545;&#26041;" aria-label="&#21830;&#25143;">
+              <input id="manual-product" type="text" placeholder="&#21830;&#21697; / &#22791;&#27880;" aria-label="&#21830;&#21697;">
+              <select id="manual-category" aria-label="&#20998;&#31867;"></select>
+              <button id="save-manual" type="button">&#28155;&#21152;</button>
+            </div>
+          </div>
+
+          <div class="import-panel">
+            <div class="panel-heading">
+              <h2>&#36134;&#21333;&#23548;&#20837;</h2>
+              <span id="import-status">&#31561;&#24453;&#25991;&#20214;</span>
+            </div>
+            <div class="import-steps" id="import-steps">
+              <span class="active" data-import-step="upload"><i>1</i>上传账单</span>
+              <span data-import-step="parse"><i>2</i>Agent 解析</span>
+              <span data-import-step="confirm"><i>3</i>确认结果</span>
+            </div>
+            <label class="dropzone" id="dropzone">
+              <input id="bill-file" type="file" accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              <span class="upload-symbol">+</span>
+              <strong>&#24494;&#20449; / &#25903;&#20184;&#23453; CSV / XLSX</strong>
+            </label>
+            <div class="import-result" id="import-result"></div>
+            <div class="import-batch-filter" id="import-batch-filter" hidden></div>
+            <div class="job-list" id="jobs"></div>
+          </div>
+
+          <div id="reports-panel" class="report-panel report-center">
+            <div class="panel-heading">
+              <h2>报告中心</h2>
+              <span id="net">&#20928;&#39069; 0.00</span>
+            </div>
+            <div class="report-tabs" role="tablist"><button type="button" data-report-tab="monthly" class="active">月度报告</button><button type="button" data-report-tab="budget">预算报告</button><button type="button" data-report-tab="subscriptions">订阅报告</button><button type="button" data-report-tab="quality">数据质量</button><button type="button" data-report-tab="exports">导出记录</button></div>
+            <div id="report-center-content" class="report-center-content"></div>
+            <div class="report-center-actions"><button id="report-center-export" type="button">导出 Markdown</button><button id="copy-report-summary" type="button" class="secondary-button">复制报告摘要</button></div>
+            <div class="category-list" id="categories" hidden></div>
+          </div>
+
+          <div id="insights-panel" class="insight-panel">
+            <div class="panel-heading">
+              <h2>&#36134;&#26412;&#27934;&#23519;</h2>
+              <span id="insight-count">0</span>
+            </div>
+            <div class="insight-list" id="insights"></div>
+          </div>
+
+          <div class="budget-panel">
+            <div class="panel-heading">
+              <h2>&#39044;&#31639;</h2>
+              <span id="budget-count">0</span>
+            </div>
+            <div class="budget-form">
+              <select id="budget-category" aria-label="&#39044;&#31639;&#20998;&#31867;"></select>
+              <input id="budget-limit" type="number" min="0" step="0.01" placeholder="&#39069;&#24230;" aria-label="&#39044;&#31639;&#39069;&#24230;">
+              <button id="save-budget" type="button">&#20445;&#23384;</button>
+            </div>
+            <div class="budget-list" id="budgets"></div>
+          </div>
+
+          <div id="rules-panel" class="rules-panel">
+            <div class="panel-heading">
+              <h2>&#20998;&#31867;&#35268;&#21017;</h2>
+              <span id="rule-count">0</span>
+            </div>
+            <div class="rule-list" id="rules"></div>
+            <div class="rule-hit-section"><strong>规则命中日志</strong><div class="rule-hit-list" id="rule-hit-log"></div></div>
+          </div>
+        </section>
+
+        <section id="transactions" class="table-section">
+          <div class="panel-heading">
+            <h2>&#20132;&#26131;&#26126;&#32454;</h2>
+            <span id="transaction-total">0 &#26465;</span>
+          </div>
+          <div class="filter-bar">
+            <input id="search" type="search" placeholder="&#25628;&#32034;&#21830;&#25143;&#12289;&#21830;&#21697;&#12289;&#20998;&#31867;" aria-label="&#25628;&#32034;&#20132;&#26131;">
+            <select id="status-filter" aria-label="&#29366;&#24577;&#31579;&#36873;">
+              <option value="">&#20840;&#37096;&#29366;&#24577;</option>
+              <option value="pending_review">&#24453;&#30830;&#35748;</option>
+              <option value="confirmed">&#24050;&#30830;&#35748;</option>
+              <option value="ignored">&#24573;&#30053;</option>
+            </select>
+            <select id="batch-category" aria-label="&#25209;&#37327;&#20998;&#31867;"></select>
+            <button id="apply-batch" type="button">&#24212;&#29992;</button>
+            <button id="export-csv" type="button">&#23548;&#20986; CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>&#36873;&#25321;</th>
+                  <th>商户</th>
+                  <th>商品 / 备注</th>
+                  <th>分类</th>
+                  <th>金额</th>
+                  <th>时间</th>
+                  <th>来源</th>
+                  <th>状态</th>
+                  <th>置信度</th>
+                  <th>原因</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-body"></tbody>
+            </table>
+          </div>
+          <div class="mobile-transactions" id="mobile-transactions"></div>
+        </section>
+          </div>
+
+          <aside class="agent-panel" aria-label="财务智能体">
+            <div class="agent-orb">LM</div>
+            <div>
+              <p class="eyebrow">AI 财务 Copilot</p>
+              <h2>和你的记账智能体对话</h2>
+              <p class="agent-copy">LedgerMind 可以解释支出变化、创建分类规则、发现订阅扣费，并从本地账本生成月度报告。</p>
+            </div>
+            <div class="agent-context">
+              <span><small>模型</small><strong id="agent-model-state">DeepSeek V4 Flash</strong></span>
+              <span><small>月份</small><strong id="agent-month-state">--</strong></span>
+              <span><small>本月交易</small><strong id="agent-transaction-state">0</strong></span>
+              <span><small>待确认</small><strong id="agent-pending-state">0</strong></span>
+            </div>
+            <label id="settings-panel" class="agent-input">
+              <input id="agent-question" type="text" placeholder="问问 LedgerMind 关于本月花销、订阅或预算的问题...">
+              <button id="ask-agent" type="button">发送</button>
+            </label>
+            <div class="agent-answer" id="agent-answer" role="status" aria-live="polite">
+              <span>智能体回答</span>
+              <p>选择一个问题或输入你的财务问题，系统会基于本地账本生成可解释分析。</p>
+            </div>
+            <div class="agent-prompts" aria-label="快捷问题">
+              <div class="prompt-group"><span>本月账本</span><div><button type="button" class="prompt-chip">总结一下我本月的花销。</button><button type="button" class="prompt-chip">为什么本周餐饮支出上涨？</button><button type="button" class="prompt-chip">找出高频消费。</button></div></div>
+              <div class="prompt-group"><span>风险检查</span><div><button type="button" class="prompt-chip">找出我可能很少使用的订阅。</button><button type="button" class="prompt-chip">检查本月预算风险。</button><button type="button" class="prompt-chip">解释一笔待确认交易。</button></div></div>
+              <div class="prompt-group"><span>财务规划</span><div><button type="button" class="prompt-chip">本月如何节省 ¥200？</button><button type="button" class="prompt-chip">给打车交易创建一条自动分类规则。</button></div></div>
+            </div>
+            <div class="anomaly-card">
+              <span id="agent-alert-label">账本状态</span>
+              <strong id="agent-alert-title">正在检查本月账本</strong>
+              <p id="agent-alert-copy">异常、订阅和待确认项目会显示在这里。</p>
+              <div class="agent-actions">
+                <button id="review-subscriptions" type="button" class="mini-button">审核订阅</button>
+                <button id="create-saving-plan" type="button" class="mini-button">生成节省计划</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <section class="mobile-home-feed" aria-label="移动端首页动态">
+          <article><span>需要你处理</span><strong id="mobile-review-title">暂无待确认交易</strong><p id="mobile-review-copy">Agent 会把低置信度交易集中到这里。</p><button id="mobile-open-review" type="button">查看审核箱</button></article>
+          <article><span>Agent Insight</span><strong id="mobile-insight-title">正在生成本月洞察</strong><p id="mobile-insight-copy">导入账单后将显示分类、订阅和预算建议。</p></article>
+          <article><span>最近交易</span><div id="mobile-recent-transactions"></div></article>
+        </section>
+        <section class="open-source-capabilities" aria-label="开源能力">
+          <div><span class="section-kicker">OPEN SOURCE READY</span><h2>开源能力</h2><p>本地优先、可独立运行，也可接入兼容模型服务。</p></div>
+          <div class="capability-groups">
+            <article><strong>本地与隐私</strong><div class="capability-pills"><span>本地优先</span><span>移动端离线可用</span><span>JSON 备份</span><span>隐私优先</span></div></article>
+            <article><strong>账单能力</strong><div class="capability-pills"><span>微信账单</span><span>支付宝账单</span><span>CSV / XLSX</span><span>人民币账本</span></div></article>
+            <article><strong>智能体能力</strong><div class="capability-pills"><span>DeepSeek V4 Flash</span><span>SiliconFlow</span><span>本地分析回退</span><span>中文规则</span></div></article>
+            <article><strong>开源与部署</strong><div class="capability-pills"><span>Android APK</span><span>Node.js 本地后端</span><span>OpenAI-compatible</span><span>可自定义模型</span></div></article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="mobile-agent-input" aria-label="移动端财务问答">
+      <input id="mobile-agent-question" type="text" placeholder="问问本月花销、订阅或预算...">
+      <button id="mobile-ask-agent" type="button">发送</button>
+    </div>
+    <nav class="mobile-nav" aria-label="移动端导航">
+      <a href="#overview" data-mobile-page="home" class="active">首页</a>
+      <a href="#transactions" data-mobile-page="transactions">交易</a>
+      <a href="#insights-panel" data-mobile-page="insights">洞察</a>
+      <a href="#agent-inbox" data-mobile-page="agent">智能体</a>
+      <a href="#privacy-panel" data-mobile-page="settings">设置</a>
+    </nav>
+    <div id="command-palette" class="command-palette-layer" hidden>
+      <div class="command-palette-backdrop" data-close-command-palette></div>
+      <section class="command-palette" role="dialog" aria-modal="true" aria-labelledby="command-palette-title">
+        <header><div><span>快捷命令</span><h2 id="command-palette-title">要执行什么操作？</h2></div><button type="button" class="icon-button" data-close-command-palette aria-label="关闭">×</button></header>
+        <input id="command-palette-search" type="search" placeholder="搜索导入、月报、审核、设置..." autocomplete="off">
+        <div id="command-palette-list" class="command-palette-list" role="listbox"></div>
+        <footer><span>↑↓ 选择</span><span>Enter 执行</span><span>Esc 关闭</span></footer>
+      </section>
+    </div>
+    <div id="transaction-detail-layer" class="transaction-detail-layer" hidden>
+      <div class="transaction-detail-backdrop" data-close-transaction-detail></div>
+      <aside id="transaction-detail-panel" class="transaction-detail-panel" role="dialog" aria-modal="true" aria-labelledby="transaction-detail-title">
+        <header><div><span>交易解释</span><h2 id="transaction-detail-title">交易详情</h2></div><button type="button" class="icon-button" data-close-transaction-detail aria-label="关闭">×</button></header>
+        <div id="transaction-detail-content" class="transaction-detail-content"></div>
+      </aside>
+    </div>
+    <div id="import-detail-layer" class="transaction-detail-layer" hidden>
+      <div class="transaction-detail-backdrop" data-close-import-detail></div>
+      <aside class="transaction-detail-panel import-detail-panel" role="dialog" aria-modal="true" aria-labelledby="import-detail-title">
+        <header><div><span>导入任务</span><h2 id="import-detail-title">批次详情</h2></div><button type="button" class="icon-button" data-close-import-detail aria-label="关闭批次详情">×</button></header>
+        <div id="import-detail-content" class="transaction-detail-content"></div>
+      </aside>
+    </div>
+    <div id="onboarding-layer" class="guide-modal-layer" hidden>
+      <div class="guide-modal-backdrop" data-close-onboarding></div>
+      <section class="guide-modal" role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
+        <header><div><span class="section-kicker">WELCOME</span><h2 id="onboarding-title">欢迎使用 LedgerMind OS</h2></div><button type="button" class="icon-button" data-close-onboarding aria-label="关闭">×</button></header>
+        <p>这是一个本地优先的中文自动记账智能体 OS。导入微信、支付宝、CSV 或 XLSX 账单后，系统会自动分类、审核、分析预算，并用中文回答你的财务问题。</p>
+        <ol class="onboarding-steps"><li><span>1</span><div><strong>导入账单</strong><p>把微信、支付宝或表格账单导入系统。</p></div></li><li><span>2</span><div><strong>审核建议</strong><p>确认低置信度交易和异常事项。</p></div></li><li><span>3</span><div><strong>询问智能体</strong><p>解释本月花销、预算风险和节省建议。</p></div></li></ol>
+        <aside class="agent-safety-note"><strong>最终确认权始终属于你</strong><span>智能体不会擅自修改账本。修改类动作会进入待执行草稿箱，由你确认后执行，并记录操作审计。</span></aside>
+        <footer><button type="button" data-onboarding-action="import">开始导入账单</button><button type="button" data-onboarding-action="demo" class="secondary-button">加载演示账本</button><button type="button" data-onboarding-action="map" class="secondary-button">查看功能地图</button><button type="button" data-close-onboarding class="text-button">稍后再说</button></footer>
+      </section>
+    </div>
+    <div id="feature-map-layer" class="guide-modal-layer" hidden>
+      <div class="guide-modal-backdrop" data-close-feature-map></div>
+      <section class="guide-modal feature-map-modal" role="dialog" aria-modal="true" aria-labelledby="feature-map-title">
+        <header><div><span class="section-kicker">PRODUCT MAP</span><h2 id="feature-map-title">功能地图</h2><p>按一次自动记账流程理解 LedgerMind OS。</p></div><button type="button" class="icon-button" data-close-feature-map aria-label="关闭">×</button></header>
+        <div class="feature-map-grid">
+          <article><span>01</span><div><strong>导入账本</strong><p>微信账单、支付宝账单、CSV、XLSX 和重复检测，统一生成交易记录。</p><small>微信 · 支付宝 · CSV / XLSX · 重复检测</small></div><button type="button" data-map-target="import">前往</button></article>
+          <article><span>02</span><div><strong>整理账本</strong><p>自动分类大部分交易，少量低置信度事项进入智能审核箱。</p><small>AI 分类 · 审核箱 · 自动化规则 · 智能体记忆</small></div><button type="button" data-map-target="review">前往</button></article>
+          <article><span>03</span><div><strong>分析财务</strong><p>查看花销结构、预算风险、账本健康度和数据可靠性。</p><small>预算 · 图表 · 健康度 · 数据质量 · 报告</small></div><button type="button" data-map-target="reports">前往</button></article>
+          <article><span>04</span><div><strong>财务智能体</strong><p>用中文提问并获得任务建议，修改账本前必须由你确认。</p><small>中文问答 · 任务流 · 草稿箱 · 操作审计</small></div><button type="button" data-map-target="agent">前往</button></article>
+          <article><span>05</span><div><strong>数据与隐私</strong><p>本地管理账本，通过备份、导出、展示模式和诊断掌握数据状态。</p><small>本地优先 · JSON · CSV · 展示模式 · 诊断</small></div><button type="button" data-map-target="settings">前往</button></article>
+        </div>
+      </section>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="jszip.min.js"></script>
+    <script src="agent-utils.js"></script>
+    <script src="app.js?v=0.1.0-beta.5"></script>
+  </body>
+</html>

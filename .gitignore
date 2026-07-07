@@ -1,0 +1,111 @@
+# Dependencies
+node_modules/
+
+# Compiled output and test coverage
+dist/
+build/
+**/build/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+key.properties
+keystore.properties
+signing.properties
+google-services.json
+
+# Logs and caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.cache/
+.eslintcache
+.parcel-cache/
+.turbo/
+
+# Local databases and runtime data
+data/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+ledger-store*.json
+*.ledger.json
+
+# User backups and private exports
+backups/
+exports/
+*-backup.json
+backup-*.json
+*.private.csv
+*.private.xlsx
+*账单*.csv
+*账单*.xlsx
+*账单*.xls
+*流水*.csv
+*流水*.xlsx
+*流水*.xls
+
+# Temporary imports and scratch files
+imports/
+uploads/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+~$*
+
+# Android local configuration, generated output and signing artifacts
+.android-sdk/
+android/local.properties
+android/.gradle/
+android/**/build/
+android/captures/
+android/.idea/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/app/src/main/res/xml/config.xml
+android/capacitor-cordova-android-plugins/
+*.apk
+*.aab
+*.aar
+*.ap_
+
+# IDE and operating system files
+.idea/
+.vscode/
+.fleet/
+.history/
+.settings/
+.project
+.classpath
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Additional user-generated local exports
+*.local.csv
+*.local.xlsx
+*.user-backup.json
+private-imports/
+
+# Keep repository-owned anonymous fixtures
+!samples/
+!samples/**

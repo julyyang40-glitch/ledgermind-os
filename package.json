@@ -1,0 +1,27 @@
+{
+  "name": "auto-ledger-agent-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b",
+    "test:unit": "node --test dist/**/*.test.js",
+    "test": "npm run build && npm run test:unit",
+    "check:release": "node scripts/release-check.mjs",
+    "start": "npm run build && node dist/apps/api/src/server.js",
+    "dev:api": "npm run build && node dist/apps/api/src/server.js",
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:apk": "npm.cmd run android:sync && cd android && gradlew.bat assembleDebug"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  }
+}

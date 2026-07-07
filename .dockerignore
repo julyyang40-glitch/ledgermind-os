@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+coverage
+.git
+.github
+.env
+.env.*
+!.env.example
+*.log
+data
+android
+*.apk
+*.aab
+*.keystore
+*.jks
+docs/images

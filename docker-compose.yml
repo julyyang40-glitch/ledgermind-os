@@ -1,0 +1,18 @@
+services:
+  ledgermind:
+    build: .
+    ports:
+      - "8787:8787"
+    environment:
+      PORT: 8787
+      SILICONFLOW_BASE_URL: ${SILICONFLOW_BASE_URL:-https://api.siliconflow.cn/v1}
+      SILICONFLOW_MODEL_NAME: ${SILICONFLOW_MODEL_NAME:-deepseek-ai/DeepSeek-V4-Flash}
+      SILICONFLOW_API_KEY: ${SILICONFLOW_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
