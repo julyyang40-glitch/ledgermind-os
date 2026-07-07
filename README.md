@@ -241,7 +241,7 @@ npm test
 npm run check:release
 ```
 
-CI 位于 `.github/workflows/ci.yml`，使用 Node.js 24 执行依赖安装、发布扫描、构建和单元测试；不注入 API Key，也不构建签名 APK。
+CI 位于 `.github/workflows/ci.yml`，可手动运行 Node.js 24 的依赖安装、发布扫描、构建和单元测试；不注入 API Key，也不构建签名 APK。
 
 ## Roadmap
 
